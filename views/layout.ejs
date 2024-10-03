@@ -1,0 +1,58 @@
+<!-- views/layout.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <% if (!session.user_id) { %>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/register">Register</a></li>
+                <% } else { %>
+                    <li><a href="/logout">Logout</a></li>
+                <% } %>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <% if (messages.success && messages.success.length > 0) { %>
+                <div class="alert success">
+                    <% messages.success.forEach(function(msg){ %>
+                        <p><%= msg %></p>
+                    <% }); %>
+                </div>
+            <% } %>
+            <% if (messages.danger && messages.danger.length > 0) { %>
+                <div class="alert danger">
+                    <% messages.danger.forEach(function(msg){ %>
+                        <p><%= msg %></p>
+                    <% }); %>
+                </div>
+            <% } %>
+            <% if (messages.info && messages.info.length > 0) { %>
+                <div class="alert info">
+                    <% messages.info.forEach(function(msg){ %>
+                        <p><%= msg %></p>
+                    <% }); %>
+                </div>
+            <% } %>
+
+            <!-- Include the dynamic view here -->
+            <%- include(view) %>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 GateApp</p>
+    </footer>
+</body>
+</html>

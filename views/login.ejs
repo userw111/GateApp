@@ -1,0 +1,22 @@
+<!-- views/login.ejs -->
+
+<h2>Login</h2>
+<p>Welcome! Please log in to access your account.</p>
+
+<form action="/login" method="POST">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+
+    <label for="user_type">User Type:</label>
+    <select id="user_type" name="user_type">
+        <option value="resident">Resident</option>
+        <option value="security">Security Personnel</option>
+    </select>
+
+    <button type="submit">Login</button>
+</form>
+
+<p>Don't have an account? <a href="/register">Register here</a>.</p>

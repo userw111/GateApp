@@ -1,0 +1,10 @@
+<!-- views/index.ejs -->
+
+<h1>Welcome to GateApp</h1>
+<p>Your portal for easy gate access management.</p>
+
+<% if (!session.user_id) { %>
+    <p><a href="/login">Login</a> or <a href="/register">Register</a> to get started.</p>
+<% } else { %>
+    <p>Welcome back, <%= session.user_name %>!</p>
+<% } %>
